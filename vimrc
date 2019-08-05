@@ -49,7 +49,7 @@ end
 
 filetype plugin indent on     " required! 
 syntax enable
-colorscheme jc
+colorscheme delek
 runtime macros/matchit.vim
 let g:EasyMotion_leader_key = '<Space>'
 
@@ -416,11 +416,6 @@ vnoremap <C-d> :call PhpDocRange()<CR>
 " Tree of nerd
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
-" Show trailing white space
-match ExtraSpace /\s\+$/
-autocmd BufWinEnter * match ExtraSpace /\s\+$/
-autocmd InsertEnter * match ExtraSpace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraSpace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 let g:ctrlp_working_path_mode = 'ra'
