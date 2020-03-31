@@ -33,6 +33,7 @@ if exists(':Bundle')
     Bundle 'rust-lang/rust.vim'
     Bundle 'cespare/vim-toml.git'
     Bundle 'majutsushi/tagbar'
+    Bundle 'hashivim/vim-terraform'
 end
 "}}}
 
@@ -113,3 +114,6 @@ set autoread
 " Reload and Write on Exit
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
+
+" Rust 
+nmap <F6> :RustRun<CR>
