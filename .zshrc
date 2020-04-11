@@ -97,6 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias gistory="git log --all --graph --decorate --oneline --simplify-by-decoration" 
 export PROMPT="$GST_ENV-$PROMPT"
 
 if [ -d "$HOME/bin" ] ; then
