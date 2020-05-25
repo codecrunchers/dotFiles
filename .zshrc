@@ -98,7 +98,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gistory="git log --all --graph --decorate --oneline --simplify-by-decoration" 
-export PROMPT="$GST_ENV-$PROMPT"
+
 
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -115,3 +115,6 @@ source /home/alan/.cargo/env
 # GSTREAMER DEVEL
 export PROMPT="$GST_ENV-$PROMPT"
 
+
+#export PATH=/home/alan/bin:$PATH
+source '/home/alan/lib/azure-cli/az.completion'

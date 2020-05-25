@@ -11,7 +11,7 @@ let mapleader=","
 let g:os = "unix"
 
 " Vundle init
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 
 " Require Vundle
 try
@@ -24,7 +24,7 @@ endtry
 
 "{{{ Vundle Bundles!
 if exists(':Bundle')
-    Bundle 'vim-scripts/Conque-GDB'
+"    Bundle 'vim-scripts/Conque-GDB'
     Bundle 'ervandew/supertab'
     Bundle 'godlygeek/tabular'
     Bundle 'scrooloose/nerdtree.git'
@@ -117,3 +117,6 @@ au FocusLost,WinLeave * :silent! w
 
 " Rust 
 nmap <F6> :RustRun<CR>
+
+" Font
+set guifont=Anonymous\ Pro\ 13  
