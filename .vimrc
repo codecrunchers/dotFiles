@@ -28,17 +28,31 @@ if exists(':Bundle')
     Bundle 'ervandew/supertab'
     Bundle 'godlygeek/tabular'
     Bundle 'scrooloose/nerdtree.git'
-    Bundle 'tpope/vim-fugitive'
+"    Bundle 'tpope/vim-fugitive'
     Bundle 'ctrlpvim/ctrlp.vim'
     Bundle 'rust-lang/rust.vim'
-    Bundle 'cespare/vim-toml.git'
+"    Bundle 'cespare/vim-toml.git'
     Bundle 'majutsushi/tagbar'
-    Bundle 'hashivim/vim-terraform'
+"    Bundle 'hashivim/vim-terraform'
 end
 "}}}
 
 
-" Tagbar 
+"let g:rustfmt_autosave = 1
+"" rust customizations
+autocmd BufNewFile,BufRead *.rs set formatprg=rustfmt
+"" rust.vim
+"au FileType rust compiler cargo
+"
+"" shortcuts remap
+" rust specific
+"autocmd FileType rust nmap <Leader>r :make run<CR>
+"autocmd FileType rust nmap <Leader>b :make build<CR>
+"autocmd FileType rust nmap <Leader>t :make test<CR>
+"
+"
+"
+"
 nmap <F8> :TagbarToggle<CR>
 let g:tagbar_type_rust = {
   \ 'ctagstype' : 'rust',
@@ -54,20 +68,13 @@ let g:tagbar_type_rust = {
   \]
   \}
 
+
 set backspace=indent,eol,start
 
 filetype plugin indent on     " required! 
 syntax enable
 syntax on
 colorscheme desert
-
-
-" ConqueGDB Setting
-let g:ConqueGdb_Leader = '\' 
-let g:ConqueGdb_Print = g:ConqueGdb_Leader . 'p'
-let g:ConqueTerm_Color=2            " 1: strip color after 200 line, 2: always with color
-let g:ConqueTerm_CloseOnEnd=1       " close conque when program ends running
-let g:ConqueTerm_StartMessages=0    " display warning message if conqueTerm is configed incorrect
 
 filetype plugin indent on     " required!
 syntax enable
@@ -101,7 +108,7 @@ set shiftwidth=2
 set softtabstop=2
 
 " terraform auto-format
-let g:terraform_fmt_on_save = 1
+"let g:terraform_fmt_on_save = 1
 
 
 " Ctags & AutoComplete Harmony
@@ -120,3 +127,5 @@ nmap <F6> :RustRun<CR>
 
 " Font
 set guifont=Anonymous\ Pro\ 13  
+
+"source ~/.vim/rust.vim
