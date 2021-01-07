@@ -24,49 +24,44 @@ endtry
 
 "{{{ Vundle Bundles!
 if exists(':Bundle')
-"    Bundle 'vim-scripts/Conque-GDB'
     Bundle 'ervandew/supertab'
     Bundle 'godlygeek/tabular'
     Bundle 'scrooloose/nerdtree.git'
-"    Bundle 'tpope/vim-fugitive'
     Bundle 'ctrlpvim/ctrlp.vim'
     Bundle 'rust-lang/rust.vim'
-"    Bundle 'cespare/vim-toml.git'
     Bundle 'majutsushi/tagbar'
-"    Bundle 'hashivim/vim-terraform'
+    Bundle 'hashivim/vim-terraform'
 end
 "}}}
 
-
+" Rust
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 "let g:rustfmt_autosave = 1
 "" rust customizations
-autocmd BufNewFile,BufRead *.rs set formatprg=rustfmt
+" autocmd BufNewFile,BufRead *.rs set formatprg=rustfmt
 "" rust.vim
 "au FileType rust compiler cargo
 "
 "" shortcuts remap
-" rust specific
-"autocmd FileType rust nmap <Leader>r :make run<CR>
-"autocmd FileType rust nmap <Leader>b :make build<CR>
-"autocmd FileType rust nmap <Leader>t :make test<CR>
+nmap <F5> :%! rustfmt<CR>
 "
 "
 "
 "
-nmap <F8> :TagbarToggle<CR>
-let g:tagbar_type_rust = {
-  \ 'ctagstype' : 'rust',
-  \ 'kinds' : [
-      \'T:types,type definitions',
-      \'f:functions,function definitions',
-      \'g:enum,enumeration names',
-      \'s:structure names',
-      \'m:modules,module names',
-      \'c:consts,static constants',
-      \'t:traits',
-      \'i:impls,trait implementations',
-  \]
-  \}
+"nmap <F8> :TagbarToggle<CR>
+"let g:tagbar_type_rust = {
+"  \ 'ctagstype' : 'rust',
+"  \ 'kinds' : [
+"      \'T:types,type definitions',
+"      \'f:functions,function definitions',
+"      \'g:enum,enumeration names',
+"      \'s:structure names',
+"      \'m:modules,module names',
+"      \'c:consts,static constants',
+"      \'t:traits',
+"      \'i:impls,trait implementations',
+"  \]
+"  \}
 
 
 set backspace=indent,eol,start
@@ -122,10 +117,17 @@ set autoread
 au FocusGained,BufEnter * :silent! !
 au FocusLost,WinLeave * :silent! w
 
-" Rust 
-nmap <F6> :RustRun<CR>
-
 " Font
 set guifont=Anonymous\ Pro\ 13  
+
+" Remap : Tab for window movement
+nmap <Tab> <C-w>w
+
+" TagBar <F8>
+silent! nmap <F8> :Tagbar<CR>
+
+
+"this allows all window commands in insert mode and i'm not accidentally deleting words anymore 
+:imap <C-w> <C-o><C-w>
 
 "source ~/.vim/rust.vim
