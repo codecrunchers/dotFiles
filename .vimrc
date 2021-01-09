@@ -37,20 +37,6 @@ end
 "
 "RUST / Neomake
 "
-" Enable Neomake to run cargo asynchronously on saving rust files
-autocmd! BufWritePost, *.rs Neomake! cargo
-
-" NeoMake: Enable messages
-"let g:neomake_verbose = 3
-
-" NeoMake: Open the list of errors without moving the cursor
-let g:neomake_open_list = 2
-
-" NeoMake: Disable rustc maker, enable cargo maker.
-let g:neomake_rust_enabled_makers = []
-let g:neomake_enabled_makers = ['cargo']
-let g:neomake_cargo_args = ['check']
-
 
 "" shortcuts remap
 
