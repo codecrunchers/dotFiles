@@ -30,7 +30,7 @@ if exists(':Bundle')
     Bundle 'rust-lang/rust.vim'
     Bundle 'majutsushi/tagbar'
     Bundle 'hashivim/vim-terraform'
-    Bundle ' vim-syntastic/syntastic'
+    Bundle 'vim-syntastic/syntastic'
 end
 "}}}
 "
