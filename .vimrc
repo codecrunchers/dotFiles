@@ -35,7 +35,7 @@ end
 "}}}
 
 " Rust
-autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+" autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 "let g:rustfmt_autosave = 1
 "" rust customizations
 " autocmd BufNewFile,BufRead *.rs set formatprg=rustfmt
@@ -43,26 +43,8 @@ autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 "au FileType rust compiler cargo
 "
 "" shortcuts remap
-nmap <F5> :%! rustfmt<CR>
-"
-"
-"
-"
-"nmap <F8> :TagbarToggle<CR>
-"let g:tagbar_type_rust = {
-"  \ 'ctagstype' : 'rust',
-"  \ 'kinds' : [
-"      \'T:types,type definitions',
-"      \'f:functions,function definitions',
-"      \'g:enum,enumeration names',
-"      \'s:structure names',
-"      \'m:modules,module names',
-"      \'c:consts,static constants',
-"      \'t:traits',
-"      \'i:impls,trait implementations',
-"  \]
-"  \}
-
+nmap <F5> :%! cargo build<CR>
+nmap <F6> :%! cargo run<CR>
 
 set backspace=indent,eol,start
 
@@ -71,25 +53,12 @@ syntax enable
 syntax on
 colorscheme desert
 
-filetype plugin indent on     " required!
-syntax enable
-
+" NERDTree
 let g:NERDTreeMapHelp = "h"
-" Tree of nerd
-nnoremap <Leader>n :NERDTreeToggle<CR>
-
 " Tab completion - local
 let g:SuperTabDefaultCompletionType = "<c-x><c-p>"
-
 let NERDTreeIgnore = ['\.pyc$','\.sock$']
 
-
-nmap <silent> <A-Up> :wincmd k<CR>
-nmap <silent> <A-Down> :wincmd j<CR>
-nmap <silent> <A-Left> :wincmd h<CR>
-nmap <silent> <A-Right> :wincmd l<CR>
-
-silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F2> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 let g:NERDTreeToggle="<F2>"
@@ -103,12 +72,7 @@ set shiftwidth=2
 set softtabstop=2
 
 " terraform auto-format
-"let g:terraform_fmt_on_save = 1
-
-
-" Ctags & AutoComplete Harmony
-au BufWritePost *.c,*.cpp,*.h silent! !ctags -R &
-
+let g:terraform_fmt_on_save = 1
 
 autocmd BufNewFile,BufRead *.ts set syntax=javascript
 
@@ -127,7 +91,12 @@ nmap <Tab> <C-w>w
 silent! nmap <F8> :Tagbar<CR>
 
 
-"this allows all window commands in insert mode and i'm not accidentally deleting words anymore 
-:imap <C-w> <C-o><C-w>
+"enable mouse support
+set mouse=a
 
-"source ~/.vim/rust.vim
+" check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
+set autoread
+au CursorHold * checktime
+
+set number
+
