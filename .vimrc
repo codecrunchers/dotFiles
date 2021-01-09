@@ -7,7 +7,6 @@ filetype off                   " required!
 "<Leader> key is ,
 let mapleader=","
 
-
 let g:os = "unix"
 
 " Vundle init
@@ -31,20 +30,29 @@ if exists(':Bundle')
     Bundle 'rust-lang/rust.vim'
     Bundle 'majutsushi/tagbar'
     Bundle 'hashivim/vim-terraform'
+    Bundle ' vim-syntastic/syntastic'
 end
 "}}}
-
-" Rust
-" autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
-"let g:rustfmt_autosave = 1
-"" rust customizations
-" autocmd BufNewFile,BufRead *.rs set formatprg=rustfmt
-"" rust.vim
-"au FileType rust compiler cargo
 "
+"
+"RUST / Neomake
+"
+" Enable Neomake to run cargo asynchronously on saving rust files
+autocmd! BufWritePost, *.rs Neomake! cargo
+
+" NeoMake: Enable messages
+"let g:neomake_verbose = 3
+
+" NeoMake: Open the list of errors without moving the cursor
+let g:neomake_open_list = 2
+
+" NeoMake: Disable rustc maker, enable cargo maker.
+let g:neomake_rust_enabled_makers = []
+let g:neomake_enabled_makers = ['cargo']
+let g:neomake_cargo_args = ['check']
+
+
 "" shortcuts remap
-nmap <F5> :%! cargo build<CR>
-nmap <F6> :%! cargo run<CR>
 
 set backspace=indent,eol,start
 
