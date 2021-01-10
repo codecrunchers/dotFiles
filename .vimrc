@@ -1,3 +1,5 @@
+set nocompatible
+
 if exists(':let') == 0
     finish
 endif
@@ -31,12 +33,14 @@ if exists(':Bundle')
     Bundle 'majutsushi/tagbar'
     Bundle 'hashivim/vim-terraform'
     Bundle 'vim-syntastic/syntastic'
+    Bundle 'tpope/vim-fugitive'
 end
 "}}}
 "
 "
-"RUST / Neomake
-"
+"RUST
+autocmd BufNewFile,BufRead *.rs set formatprg=rustfmt 
+let g:rustfmt_autosave = 1
 
 "" shortcuts remap
 
@@ -93,4 +97,19 @@ set autoread
 au CursorHold * checktime
 
 set number
+
+
+
+" ?
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set backspace=2
+set nofoldenable
+set foldmethod=syntax
+set foldlevelstart=10
+set foldnestmax=10
+set ttimeoutlen=0
+
 
