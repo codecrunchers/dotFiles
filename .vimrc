@@ -112,4 +112,9 @@ set foldlevelstart=10
 set foldnestmax=10
 set ttimeoutlen=0
 
-
+" Cursor related yo modes
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+" auto insert mode
+start
