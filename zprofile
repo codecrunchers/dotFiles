@@ -22,6 +22,6 @@ PROMPT+="@"
 PROMPT+="%F{blue}${${(%):-%m}#zoltan-}%f" # Blue host name, minus zoltan
 PROMPT+=" "
 PROMPT+="%F{yellow}%1~ %f" # Yellow working directory
-PROMPT+=" %# "}"
+PROMPT+=" %# "
 
 
