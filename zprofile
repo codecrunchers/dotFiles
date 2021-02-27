@@ -25,5 +25,3 @@ PROMPT+="%F{yellow}%1~ %f" # Yellow working directory
 PROMPT+=" %# "}"
 
 
-Oracle OCI Client
-#[[ -e "/home/alan/bin/oracle-cli/lib/python3.8/site-packages/oci_cli/bin/oci_autocomplete.sh" ]] && source "/home/alan/bin/oracle-cli/lib/python3.8/site-packages/oci_cli/bin/oci_autocomplete.sh"
