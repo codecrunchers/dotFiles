@@ -17,11 +17,14 @@ export PATH="/home/alan/local-devel/picam_all/mender/mender-convert:$PATH"
 export PATH="/home/alan/local-devel/picam_all/mender/mender-integration-2.4.1:$PATH"
 export PATH="/home/alan/local-devel/picam_all/mender/modules/v3:$PATH"
 
-PROMPT="%F{magenta}%n%f"  # Magenta user name
-PROMPT+="@"
-PROMPT+="%F{blue}${${(%):-%m}#zoltan-}%f" # Blue host name, minus zoltan
-PROMPT+=" "
-PROMPT+="%F{yellow}%1~ %f" # Yellow working directory
-PROMPT+=" %# "
+export PROMPT='%(!.%{%F{yellow}%}.)$USER@%{$fg[white]%}%M ${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+
+#PROMPT="%F{magenta}%n%f"  # Magenta user name
+#PROMPT+="@"
+#PROMPT+="%F{blue}${${(%):-%m}#zoltan-}%f" # Blue host name, minus zoltan
+#PROMPT+=" "
+#PROMPT+="%F{yellow}%1~ %f" # Yellow working directory
+#PROMPT+=" %# "
+
 
 
