@@ -1,120 +1,60 @@
-set nocompatible
 
-if exists(':let') == 0
-    finish
+set encoding=UTF-8
+call plug#begin()
+" The default plugin directory will be as follows:
+"   - Vim (Linux/macOS): '~/.vim/plugged'
+"   - Vim (Windows): '~/vimfiles/plugged'
+"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
+" You can specify a custom plugin directory by passing it as the argument
+"   - e.g. `call plug#begin('~/.vim/plugged')`
+"   - Avoid using standard Vim directory names like 'plugin'
+
+" Make sure you use single quotes
+
+" On-demand loadin
+	Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+	Plug 'https://github.com/vim-airline/vim-airline' " Show status bar
+	Plug 'https://github.com/vim-airline/vim-airline-themes.git' " Customize status bar
+	Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Change color Schemes
+	Plug 'neoclide/coc.nvim', {'branch': 'release'} " Auto complete Python
+	Plug 'https://github.com/ryanoasis/vim-devicons' " Display developer icons
+	Plug 'https://tpope.io/vim/fugitive.git'
+	Plug 'junegunn/fzf.vim'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Initialize plugin system
+" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+call plug#end()
+
+" set guifont=hack_nerd_font:h21
+" Set default colorscheme
+colorscheme molokai
+" Customize status bar
+let g:airline_theme='dessert'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
 endif
-set nocompatible               " be iMproved
-filetype off                   " required!
 
-"<Leader> key is ,
-let mapleader=","
-
-let g:os = "unix"
-
-" Vundle init
-set rtp+=~/.vim/bundle/Vundle.vim
-
-" Require Vundle
-try
-    call vundle#rc()
-catch
-    echohl Error | echo "Vundle is not installed. Run 'cd ~/.vim/ && git submodule init && git submodule update'" | echohl None
-endtry
-
-
-
-"{{{ Vundle Bundles!
-if exists(':Bundle')
-    Bundle 'ervandew/supertab'
-    Bundle 'godlygeek/tabular'
-    Bundle 'scrooloose/nerdtree.git'
-    Bundle 'ctrlpvim/ctrlp.vim'
-    Bundle 'rust-lang/rust.vim'
-    Bundle 'majutsushi/tagbar'
-    Bundle 'hashivim/vim-terraform'
-    Bundle 'vim-syntastic/syntastic'
-    Bundle 'tpope/vim-fugitive'
-end
-"}}}
-"
-"
-"RUST
-autocmd BufNewFile,BufRead *.rs set formatprg=rustfmt 
-let g:rustfmt_autosave = 1
-
-"" shortcuts remap
-
-set backspace=indent,eol,start
-
-filetype plugin indent on     " required! 
-syntax enable
-syntax on
-colorscheme desert
-
-" NERDTree
-let g:NERDTreeMapHelp = "h"
-" Tab completion - local
-let g:SuperTabDefaultCompletionType = "<c-x><c-p>"
-let NERDTreeIgnore = ['\.pyc$','\.sock$']
-
+" airline symbols
+let g:airline_symbols.branch = 'B'
+let g:airline_symbols.readonly = 'RO'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.space  = ''
 silent! map <F2> :NERDTreeToggle<CR>
-silent! map <F3> :NERDTreeFind<CR>
 let g:NERDTreeToggle="<F2>"
-let g:NERDTreeMapActivateNode="<F3>"
-let g:NERDTreeMapPreview="<F4>"
-
-
-" Tabs
-set expandtab
-set shiftwidth=2
-set softtabstop=2
-
-" terraform auto-format
-let g:terraform_fmt_on_save = 1
-
-autocmd BufNewFile,BufRead *.ts set syntax=javascript
-
-set autoread
-" Reload and Write on Exit
-au FocusGained,BufEnter * :silent! !
-au FocusLost,WinLeave * :silent! w
-
-" Font
-set guifont=Anonymous\ Pro\ 13  
-
-" Remap : Tab for window movement
+autocmd VimEnter * NERDTree
+" Tab for window movement
 nmap <Tab> <C-w>w
 
-" TagBar <F8>
-silent! nmap <F8> :Tagbar<CR>
 
 
-"enable mouse support
 set mouse=a
 
-" check file change every 4 seconds ('CursorHold') and reload the buffer upon detecting change
-set autoread
-au CursorHold * checktime
+" devicons: reasonable defaults from webinstall.dev/vim-devicons
+source ~/.vim/plugins/devicons.vim
+source ~/.vim/coc.vim
+"let g:loaded_matchparen=1
+"let g:UltiSnipsSnippetDirectories=[$HOME.'/.vim/UltiSnips']
+"let g:UltiSnipsUsePythonVersion = 3set 
+set noswapfile
 
-set number
-
-
-
-" ?
-set tabstop=8
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-set backspace=2
-set nofoldenable
-set foldmethod=syntax
-set foldlevelstart=10
-set foldnestmax=10
-set ttimeoutlen=0
-
-" Cursor related yo modes
-let &t_SI = "\<Esc>[6 q"
-let &t_SR = "\<Esc>[4 q"
-let &t_EI = "\<Esc>[2 q"
-" auto insert mode
-start
